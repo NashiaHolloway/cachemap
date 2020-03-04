@@ -3,15 +3,21 @@
 ##############################
 
 # import helpers
-import argparse
+import argparse, sys, os, os.path
 
-class cachemap():
-    def __init__(self):
+class cachemap:
+    def __init__(self, source=os.path.dirname(os.getcwd()), dest=os.path.dirname(os.getcwd())):
+        self.src = source
+        self.dst = dest
 
     def read_bmp():
+        pass
 
     def genetic_algo():
-
+        pass
+    
+    def export_sol():
+        pass
 if __name__ == "__main__":
     # cool ascii art
     print("   ___    ________  ________  ________  ___  ___  _______   _____ ______   ________  ________     ___            ")
@@ -29,4 +35,9 @@ if __name__ == "__main__":
         # -h to show usage
         # -src or -s read in data from specified dir (containing .bmp files)
         # -dst or -d output final pic to specified dir
+    arg = argparse.ArgumentParser(description = "RDP Bitmap Cache Solver")
+    arg.add_argument("-s", help="Specify directory to read .bmp images from.", required=True)
+    arg.add_argument("-d", help="Specify the directory to output final image to.", required=True)
+    use = arg.parse_args(sys.argv[1:])
+    cm = cachemap(source=args.s, dest=args.d)
 
