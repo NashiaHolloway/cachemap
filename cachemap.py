@@ -35,9 +35,19 @@ if __name__ == "__main__":
         # -h to show usage
         # -src or -s read in data from specified dir (containing .bmp files)
         # -dst or -d output final pic to specified dir
+        # -num max tiles to solve
     arg = argparse.ArgumentParser(description = "RDP Bitmap Cache Solver")
-    arg.add_argument("-s", help="Specify directory to read .bmp images from.", required=True)
-    arg.add_argument("-d", help="Specify the directory to output final image to.", required=True)
+    arg.add_argument("-s", "--source", help="Specify directory to read .bmp images from.", required=True)
+    arg.add_argument("-d", "--destination", help="Specify the directory to output final image to.", required=True)
+    arg.add_argument("-n", "--num_tiles", help="Max number of tiles to solve.", required=False)
     use = arg.parse_args(sys.argv[1:])
     cm = cachemap(source=args.s, dest=args.d)
+
+    # flow
+        # create a 1D array of tiles (grayscale? yes or no? Do research on what's best)
+            # NOTE: no need to rotate or resize tiles, they will be 64x64 bit pixel tiles
+        # create initial population with edge pieces, n size, and n segments
+        # calculate fitness (or how close to the final answer we are)
+        # output the "solved" or generations of "solved" pictures
+        # do more research on what is right :D
 
