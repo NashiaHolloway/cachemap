@@ -48,3 +48,5 @@ We need to populate the tiles in order to process them with the genetic algorith
 
 [The Importance of Grayscaling](https://www.geeksforgeeks.org/python-grayscaling-of-images-using-opencv/)
 
+[Skimage Library](https://scikit-image.org/docs/dev/api/skimage.html)
+
