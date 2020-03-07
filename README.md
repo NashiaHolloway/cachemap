@@ -20,6 +20,8 @@ There are RDP bitmap cache parsers out in the world, so we don't need to repeat 
 ## Integration with bmc-tools
 When decoding the .bin or .bmc files, a .bmp image is created with the naming convention "Cachexxxx.bin_tileNum.bmp" (xxxx starts as 0000 and is incremented by 1 for each individual .bin file) for .bin or "bcache24.bmc_tileNum.bmp" for .bmc. They are all exported to the same directory, most times numbering in the thousands, depending on how many individual .bin or .bmc files there are. However, with the naming convention, we will be able to group them together based on which original file they're associated with.
 
+I have updated the bmc-tools code for compatability with Python 3. I will make a pull request once finished with this project, by cloning my fork of it will guarantee success.
+
 ## Genetic Algoritm Breakdown
 Genetic algorithms are cool because they mimic evolution in the natural world. They are used in certain cases where brute forcing the problem would take too long. There are three principles we need to take into account when creating a genetic algorithm.
 
