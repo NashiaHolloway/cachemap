@@ -23,7 +23,7 @@ When decoding the .bin or .bmc files, a .bmp image is created with the naming co
 I have updated the bmc-tools code for compatability with Python 3. I will make a pull request once finished with this project, but cloning my fork of it will guarantee success.
 
 ## Genetic Algoritm Breakdown
-Genetic algorithms are cool because they mimic evolution in the natural world. They are used in certain cases where brute forcing the problem would take too long. There are three principles we need to take into account when creating a genetic algorithm.
+Genetic algorithms are cool because they mimic evolution in the natural world. They are used in certain cases where brute forcing the problem would take too long. There are three principles we need to take into account when creating a genetic algorithm:
 
 1. **Herdity**: Traits need to be passed down from parents to children (the next generation).
 2. **Variation**: Without mutations, the next generation will be exactly the same as the previous and remain stagnant.
@@ -45,4 +45,6 @@ We need to populate the tiles in order to process them with the genetic algorith
 [Tyler Foxworthy's Presentation](https://www.youtube.com/watch?v=6DohBytdf6I)
 
 [Kris Nguyen's Jigsaw Puzzle Solver](https://github.com/KrisNguyen135/Genetic-Jigsaw-Solver)
+
+[The Importance of Grayscaling](https://www.geeksforgeeks.org/python-grayscaling-of-images-using-opencv/)
 
