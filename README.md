@@ -21,7 +21,16 @@ There are RDP bitmap cache parsers out in the world, so we don't need to repeat 
 When decoding the .bin or .bmc files, a .bmp image is created with the naming convention "Cachexxxx.bin_tileNum.bmp" (xxxx starts as 0000 and is incremented by 1 for each individual .bin file) for .bin or "bcache24.bmc_tileNum.bmp" for .bmc. They are all exported to the same directory, most times numbering in the thousands, depending on how many individual .bin or .bmc files there are. However, with the naming convention, we will be able to group them together based on which original file they're associated with.
 
 ## Genetic Algoritm Breakdown
-Genetic algorithms are cool because they mimic evolution in the natural world. They are used in certain cases where brute forcing the problem would take too long.
+Genetic algorithms are cool because they mimic evolution in the natural world. They are used in certain cases where brute forcing the problem would take too long. There are three principles we need to take into account when creating a genetic algorithm.
+
+1. **Herdity**: Traits need to be passed down from parents to children (the next generation).
+2. **Variation**: Without mutations, the next generation will be exactly the same as the previous and remain stagnant.
+3. **Selection**: Only the "fittest" should be able to pass on their traits to the next generation.
+
+### Steps
+**Create a Population**
+
+We need to populate the tiles in order to process them with the genetic algorithm. This is made simple, since we have already parsed the .bin and .bmc files with bmc-tools. So the first step is to stage the tiles in some data structure. A one dimensional array will be good for this. I have chosen to process the images in grayscale, as [my research has shown](https://www.geeksforgeeks.org/python-grayscaling-of-images-using-opencv/) it is easier that way.
 
 
 ## Resources
