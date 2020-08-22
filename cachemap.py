@@ -4,7 +4,7 @@
 
 # import helpers
 import argparse, sys, os, os.path
-import skimage
+from PIL import Image, ImageOps
 
 class cachemap:
     def __init__(self, source=os.path.dirname(os.getcwd()), dest=os.path.dirname(os.getcwd())):
@@ -13,6 +13,8 @@ class cachemap:
 
     def read_bmp(tile):
         # as tiles come in, add them to the end of the 1D array after grayscaling
+
+        # save images in greyscale
         tile = skimage.color.rgb2gray(tile)
         return True
 
@@ -53,6 +55,7 @@ if __name__ == "__main__":
     if os.path.isdir(use.s): # if source is valid, proceed
         sys.stdout.write("[+] Reading in images from %s" % (os.linesep))
         images = []
+        
     elif not os.path.isfile(use.s): # if source is invalid, handle 
         sys.stderr.write("Invalid -s/--source path %s. Use -h/--help for help" % (os.linesep))
         exit(-1)
