@@ -1,5 +1,6 @@
 import glob
-import skimage.color
+import PIL
+from PIL import Image, ImageOps
 import os, os.path, sys
 
 if __name__ == "__main__":
@@ -8,8 +9,8 @@ if __name__ == "__main__":
     dest = os.path.dirname(os.path.realpath(__file__))
     print (dest)
 
-    source = input("source: ")
-    dest = input("dest: ")
+    #source = input("source: ")
+    #dest = input("dest: ")
 
     if os.path.isdir(source): # if source is valid, proceed
         sys.stdout.write("[+] Reading in images from %s\n" % (source))
@@ -23,7 +24,13 @@ if __name__ == "__main__":
         os.makedirs(dest)
         sys.stdout.write("[+] Created directory %s\n" % (dest))
         sys.stdout.write("[+] Writing images to %s\n" % (dest))
+    
+    # import all *.jpg images in greyscale
+    # NOTE There is no "easy" way to convert greyscale to rgb; must map each greyscale value to right rgb value in order to get original
+    for filename in glob.glob('%s\*.jpg' % source):
+        print(filename)
+        gray_image = ImageOps.grayscale(Image.open(filename))
+        # gray_image.show()
+        gray_image.save(filename)
 
-    image = glob.glob("%s/*.jpg" % source)
-    tile = skimage.color.rgb2gray(image)
 
