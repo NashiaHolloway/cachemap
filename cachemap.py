@@ -4,21 +4,28 @@
 
 # import helpers
 import argparse, sys, os, os.path
-from PIL import Image, ImageOps
+from PIL import Image, ImageOps # Pillow
+from progress.bar import Bar # progress bar
 
 class cachemap:
     def __init__(self, source=os.path.dirname(os.getcwd()), dest=os.path.dirname(os.getcwd())):
         self.src = source
         self.dst = dest
 
-    def chunk():
-        # separate images by Cachexxxx and bin_x
-        # what is the best way to do this?
-            # Cachexxxx + bin_x number of arrays to solve separately (i.e. Chunk them into final separate images)
-            # example: Cache0000_bin1(250 tiles) = 1 image; Cache0000_bin2 = 1 image; Cache0000_bin3 = 1 image; Cache0000_bin4 = 1 image
-            # example: Cache0001_bin1(250 tiles) = 1 image; Cache0002_bin1 = 1 image; Cache0002_bin2 = 1 image
-        c = 0000
-        b = 0
+# actually don't need to chunk!
+#     def chunk():
+#         # separate images by Cachexxxx and bin_x
+#         # what is the best way to do this?
+#             # Cachexxxx + bin_x = number of arrays to solve separately (i.e. Chunk them into final separate images)
+#             # example: Cache0000_bin1(250 tiles) = 1 image; Cache0000_bin2 = 1 image; Cache0000_bin3 = 1 image; Cache0000_bin4 = 1 image
+#             # example: Cache0001_bin1(250 tiles) = 1 image; Cache0002_bin1 = 1 image; Cache0002_bin2 = 1 image
+#
+#         c = 0000
+#         b = 0
+#         test_img = ["Cache0000_bin0"]
+#         for image in use.s:
+#             while
+
 
 
     def read_bmp(tile):
@@ -59,23 +66,28 @@ if __name__ == "__main__":
     arg.add_argument("-s", "--source", help="Specify directory to read .bmp images from.", required=True)
     arg.add_argument("-d", "--destination", help="Specify the directory to output final image to.", required=True)
     arg.add_argument("-n", "--num_tiles", help="Max number of tiles to solve.", required=False)
-    use = arg.parse_args(sys.argv[1:])
-    cm = cachemap(source=use.s, dest=use.d)
+    args = arg.parse_args()
+    #use = arg.parse_args(sys.argv[1:])
+    cm = cachemap(source=args.source, dest=args.destination)
 
-    if os.path.isdir(use.s): # if source is valid, proceed
-        sys.stdout.write("[+] Reading in images from %s" % (os.linesep))
-        images = []
-        
-    elif not os.path.isfile(use.s): # if source is invalid, handle 
+    if os.path.isdir(args.source): # if source is valid, proceed
+        image_list = []
+        max = len(os.listdir(args.source)) # number of images in dir (starting at 1)
+        bar = Bar("[+] Reading in images from %s" % (args.source), max=max)
+        for image in os.listdir(args.source):
+            if image.endswith(".bmp"):
+                # add image to array
+                bar.next()
+                image_list.append(Image.open(os.path.join(args.source,image)))
+    else:
         sys.stderr.write("Invalid -s/--source path %s. Use -h/--help for help" % (os.linesep))
         exit(-1)
-    else:
-        pass
-    for img in images:
-        if cm.read_bmp(img):
-            cm.genetic_algo()
-            cm.export_sol()
-            cm.cleanup()
+
+#     for img in images:
+#         if cm.read_bmp(img):
+#             cm.genetic_algo()
+#             cm.export_sol()
+#             cm.cleanup()
 
     # flow
         # create a 1D array of tiles (grayscale? yes or no? Do research on what's best)
