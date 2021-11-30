@@ -11,6 +11,16 @@ class cachemap:
         self.src = source
         self.dst = dest
 
+    def chunk():
+        # separate images by Cachexxxx and bin_x
+        # what is the best way to do this?
+            # Cachexxxx + bin_x number of arrays to solve separately (i.e. Chunk them into final separate images)
+            # example: Cache0000_bin1(250 tiles) = 1 image; Cache0000_bin2 = 1 image; Cache0000_bin3 = 1 image; Cache0000_bin4 = 1 image
+            # example: Cache0001_bin1(250 tiles) = 1 image; Cache0002_bin1 = 1 image; Cache0002_bin2 = 1 image
+        c = 0000
+        b = 0
+
+
     def read_bmp(tile):
         # as tiles come in, add them to the end of the 1D array after grayscaling
 
