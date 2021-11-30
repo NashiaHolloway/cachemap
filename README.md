@@ -33,7 +33,7 @@ Genetic algorithms are cool because they mimic evolution in the natural world. T
 ### Steps
 **Create a Population**
 
-We need to populate the tiles in order to process them with the genetic algorithm. This is made simple, since we have already parsed the .bin and .bmc files with bmc-tools. So the first step is to stage the tiles in some data structure. A one dimensional array will be good for this. I have chosen to process the images in grayscale, as [my research has shown](https://www.geeksforgeeks.org/python-grayscaling-of-images-using-opencv/) it is easier that way.
+We need to populate the tiles in order to process them with the genetic algorithm. This is made simple, since we have already parsed the .bin and .bmc files with bmc-tools. So the first step is to stage the tiles in some data structure. A one dimensional array will be good for this. 
 
 
 ## Resources

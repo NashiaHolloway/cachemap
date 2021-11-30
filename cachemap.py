@@ -12,22 +12,6 @@ class cachemap:
         self.src = source
         self.dst = dest
 
-# actually don't need to chunk!
-#     def chunk():
-#         # separate images by Cachexxxx and bin_x
-#         # what is the best way to do this?
-#             # Cachexxxx + bin_x = number of arrays to solve separately (i.e. Chunk them into final separate images)
-#             # example: Cache0000_bin1(250 tiles) = 1 image; Cache0000_bin2 = 1 image; Cache0000_bin3 = 1 image; Cache0000_bin4 = 1 image
-#             # example: Cache0001_bin1(250 tiles) = 1 image; Cache0002_bin1 = 1 image; Cache0002_bin2 = 1 image
-#
-#         c = 0000
-#         b = 0
-#         test_img = ["Cache0000_bin0"]
-#         for image in use.s:
-#             while
-
-
-
     def read_bmp(tile):
         # as tiles come in, add them to the end of the 1D array after grayscaling
 
@@ -67,7 +51,6 @@ if __name__ == "__main__":
     arg.add_argument("-d", "--destination", help="Specify the directory to output final image to.", required=True)
     arg.add_argument("-n", "--num_tiles", help="Max number of tiles to solve.", required=False)
     args = arg.parse_args()
-    #use = arg.parse_args(sys.argv[1:])
     cm = cachemap(source=args.source, dest=args.destination)
 
     if os.path.isdir(args.source): # if source is valid, proceed
@@ -77,8 +60,8 @@ if __name__ == "__main__":
         for image in os.listdir(args.source):
             if image.endswith(".bmp"):
                 # add image to array
-                bar.next()
                 image_list.append(Image.open(os.path.join(args.source,image)))
+                bar.next()
     else:
         sys.stderr.write("Invalid -s/--source path %s. Use -h/--help for help" % (os.linesep))
         exit(-1)
